@@ -104,7 +104,7 @@ main .my-grid .my-square.my-active{
     background-color: var(--square-active-color);
 }
 
-main .my-grid .my-square.my-active.my-failure{
+main .my-grid .my-square.my-failure{
     background-color: var(--link-active-color);
 }
 

@@ -34,7 +34,7 @@ playBtn.addEventListener('click' , function(){
         // ? INSIMENTO DELLE INFO DELLA PARTITA NEL DOM
 
         // * Creazione delle costanti
-        const infoMatch = getAnElement('div','my-info d-flex justify-content-between');
+        const infoMatch = getAnElement('div','my-info d-flex justify-content-between pb-5');
         const scoreContainer = getAnElement('span' , 'my-score-number');
         const remainingNumbersContainer = getAnElement('span','my-remaining-numbers');
         const numberOfBombsContainer = getAnElement('span','my-bombs-number')
@@ -89,6 +89,7 @@ playBtn.addEventListener('click' , function(){
             if(elemenstWithBomb.includes(i)){
                 bombIcon = getAnElement('i','fa fa-bomb my-icon d-none');
                 gridSingleElement.append(bombIcon);
+                gridSingleElement.classList.add('my-bomb');
             }
 
             // * Aggiunta del evento per ogni singolo elemento della griglia
@@ -122,6 +123,7 @@ playBtn.addEventListener('click' , function(){
                     }
                 }else if(!isWinning && remainingNumbers!=0){
                     alert('Devi resettare');
+                    gridSingleElement.classList.add('my-failure');
                 }
             })
         }
@@ -160,7 +162,7 @@ function getARandomNumber(minValue , maxValue){
 
 
 
-// * FUNZIONE PER VALIDARE IL VALORE IN INGRESSO E RENDERLO UN NUMERO
+// * FUNZIONE PER OTTENERE UN NUMERO A PARTIRE DA UN VALORE DATO NEL PROMPT
 function getANumberByAPrompt(promptValue){
     if(!Number.isNaN(promptValue)){
         while(!isFinite(promptValue)){
@@ -204,8 +206,8 @@ function getAIntNumber(num){
 function getANumberOfBombs(num , total){
     num = getAIntNumber(num);
 
-    while(num>total){
-        alert(`Il numero inserito deve essere compreso tra 0 e ${total}`);
+    while(num>=total){
+        alert(`Il numero inserito deve essere maggiore di 0 e minore di ${total}`);
         num = prompt('Ridigita il valore');
         num = getAIntNumber(num);
     }

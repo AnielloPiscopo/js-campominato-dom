@@ -62,10 +62,19 @@ playBtn.addEventListener('click' , function(){
         for(let i=1 ; i<=100 ; i++){
             // * Creazione e inserimento del singolo elemento della griglia
             let gridSingleElement = getAnElement('div' , 'my-square align-items-center justify-content-center d-flex');
+            const gridNumber = getAnElement('span','my-number');
+            let bombIcon;
 
-            gridSingleElement.innerHTML = i;
+            gridNumber.innerHTML = i;
+            gridSingleElement.append(gridNumber);
 
             gridContainer.append(gridSingleElement);
+
+            // * Aggiunta delle bombe alla griglia        
+            if(elemenstWithBomb.includes(i)){
+                bombIcon = getAnElement('i','fa fa-bomb my-icon d-none');
+                gridSingleElement.append(bombIcon);
+            }
 
             // * Aggiunta del evento per ogni singolo elemento della griglia
             gridSingleElement.addEventListener('click' , function(){
@@ -74,11 +83,20 @@ playBtn.addEventListener('click' , function(){
                 gridSingleElement.classList.add('my-active');
 
                 if(elemenstWithBomb.includes(i)){
+                    gridSingleElement.classList.add('my-failure');
                     alert('BOOOOOM!\nHai perso deficiente.');
-                }else if(!gridSingleElement.classList.contains('my-active')){
-                    score++;
-                    scoreContainer.innerHTML = `Punteggio:${score}`;
-                    console.log(score);
+                    
+                    gridNumber.classList.add('d-none');
+                    bombIcon.classList.remove('d-none');
+                }
+                else{
+                    isWinning = true;
+
+                    if(!gridSingleElement.classList.contains('my-point-number')){
+                        gridSingleElement.classList.add('my-point-number');
+                        score++;
+                        scoreContainer.innerHTML = `Punteggio:${score}`;
+                    }
                 }
             })
         }

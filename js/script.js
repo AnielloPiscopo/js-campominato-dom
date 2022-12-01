@@ -18,11 +18,14 @@ CODICE PRINCIPALE */
 playBtn.addEventListener('click' , function(){
     if(mainElement.innerText === ''){
         // ? DICHIARAZIONI E INIZIALIZZAZIONI INIZIALI
-        let numberOfBombs = 16;
         const elemenstWithBomb = [];
         let score = 0;
         let isWinning = true;
         let i = 0;
+
+
+        // ? RICHIESTA DEL NUMERO DI BOMBE ALL'UTENTE PRESENTI NEL GIOCO
+        let numberOfBombs = parseInt(prompt('Quante bombe vuoi inserire?'));
         let remainingNumbers = 100 - numberOfBombs;
 
 
@@ -89,8 +92,6 @@ playBtn.addEventListener('click' , function(){
             // * Aggiunta del evento per ogni singolo elemento della griglia
             gridSingleElement.addEventListener('click' , function(){
                 if(isWinning){
-                    remainingNumbers--;
-                    remainingNumbersContainer.innerHTML = `Numeri rimanenti:${remainingNumbers}`;
                     gridSingleElement.classList.add('my-active');
 
                     if(elemenstWithBomb.includes(i)){
@@ -107,11 +108,14 @@ playBtn.addEventListener('click' , function(){
                             gridSingleElement.classList.add('my-point-number');
                             score++;
                             scoreContainer.innerHTML = `Punteggio:${score}`;
+                            remainingNumbers--;
+                            remainingNumbersContainer.innerHTML = `Numeri rimanenti:${remainingNumbers}`;
                     }
 
                     
                     if(remainingNumbers === 0){
                         isWinning = false;
+                        alert('HAI VINTO!!11!!11!!11!!!1!!')
                         infoMatch.innerHTML = `<strong class="w-100 text-center text-uppercase">Hai vinto</strong>`
                     }
                 }else if(!isWinning && remainingNumbers!=0){

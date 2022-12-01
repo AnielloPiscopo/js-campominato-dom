@@ -25,7 +25,8 @@ playBtn.addEventListener('click' , function(){
 
 
         // ? RICHIESTA DEL NUMERO DI BOMBE ALL'UTENTE PRESENTI NEL GIOCO
-        let numberOfBombs = parseInt(prompt('Quante bombe vuoi inserire?'));
+        let numberOfBombs = prompt('Quante bombe vuoi inserire?');
+        numberOfBombs = getAIntNumber(numberOfBombs);
         let remainingNumbers = 100 - numberOfBombs;
 
 
@@ -154,4 +155,29 @@ function getAnElement(element , elementClasses){
 function getARandomNumber(minValue , maxValue){
     const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
     return randomNumber;
+}
+
+
+
+// * FUNZIONE PER VALIDARE IL VALORE IN INGRESSO E RENDERLO UN NUMERO
+function getANumberByAPrompt(promptValue){
+    while(Number.isNaN(promptValue)){
+        alert('Non hai inserito alcun numero');
+        promptValue = prompt('Ridigita il valore');
+    }
+
+    return parseFloat(promptValue);
+}
+
+
+
+function getAIntNumber(num){
+    num = getANumberByAPrompt(num);
+
+    while(num<0 || num - Math.floor(num) != 0){
+        alert('Il numero inserito non è valido');
+        num = prompt('Ridigita il valore');
+    }
+
+    return num;
 }

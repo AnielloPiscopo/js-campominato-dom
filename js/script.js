@@ -22,12 +22,13 @@ playBtn.addEventListener('click' , function(){
         let score = 0;
         let isWinning = true;
         let i = 0;
+        let totalNumbers = 100;
 
 
         // ? RICHIESTA DEL NUMERO DI BOMBE ALL'UTENTE PRESENTI NEL GIOCO
         let numberOfBombs = prompt('Quante bombe vuoi inserire?');
-        numberOfBombs = getAIntNumber(numberOfBombs);
-        let remainingNumbers = 100 - numberOfBombs;
+        numberOfBombs = getANumberOfBombs(numberOfBombs , totalNumbers);
+        let remainingNumbers = totalNumbers - numberOfBombs;
 
 
         // ? INSIMENTO DELLE INFO DELLA PARTITA NEL DOM
@@ -161,9 +162,22 @@ function getARandomNumber(minValue , maxValue){
 
 // * FUNZIONE PER VALIDARE IL VALORE IN INGRESSO E RENDERLO UN NUMERO
 function getANumberByAPrompt(promptValue){
-    while(Number.isNaN(promptValue)){
-        alert('Non hai inserito alcun numero');
-        promptValue = prompt('Ridigita il valore');
+    if(!Number.isNaN(promptValue)){
+        while(!isFinite(promptValue)){
+            alert('Puoi digitare solo numeri');
+            promptValue = prompt('Ridigita il valore');
+        }
+
+        if(promptValue === null){
+            alert('Il programma è stato annullato');
+        }
+    
+        promptValue = promptValue.replace(/\s/g,'');
+    
+        while(promptValue === ''){
+            alert('Non hai digitato alcun valore');
+            promptValue = promptValue('Ridigita il valore')
+        }
     }
 
     return parseFloat(promptValue);
@@ -171,12 +185,29 @@ function getANumberByAPrompt(promptValue){
 
 
 
+// * FUNZIONE PER OTTENERE UN NUMERO INTERO
 function getAIntNumber(num){
     num = getANumberByAPrompt(num);
 
-    while(num<0 || num - Math.floor(num) != 0){
+    while((num<=0 || num - Math.floor(num) != 0) && num !== null){
         alert('Il numero inserito non è valido');
         num = prompt('Ridigita il valore');
+        num = getANumberByAPrompt(num);
+    }
+
+    return num;
+}
+
+
+
+// * FUNZIONE PER OTTENERE UN NUMERO DELLA BOMBA
+function getANumberOfBombs(num , total){
+    num = getAIntNumber(num);
+
+    while(num>total){
+        alert(`Il numero inserito deve essere compreso tra 0 e ${total}`);
+        num = prompt('Ridigita il valore');
+        num = getAIntNumber(num);
     }
 
     return num;

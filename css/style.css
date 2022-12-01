@@ -1,0 +1,179 @@
+/* *-------------------------------------------------------------------
+STILI GENERICI */
+
+/* * ROOT */
+:root{
+    /* ? COLORI */
+    --main-bg-color: #7fffd4;
+    --primary-color: black;
+    --square-hover-color : #6cdbb6;
+    --square-active-color: #b2ffff;
+    --link-color:blue;
+    --link-hover-color:darkblue;
+    --link-active-color:red;
+    --link-visited-color:purple;
+
+
+    /* ? MISURE */
+    --general-font-size: 7px;
+    --number-of-squares:10;
+    --grid-dimension : 400px;
+}
+
+
+
+/* * HTML TAG */
+body{
+    font-family: sans-serif;
+    font-size: var(--general-font-size);
+    color: var(--primary-color);
+    min-width: 400px;
+}
+
+
+
+/* * CLASSI */
+.my-link{
+    color: var(--link-color);
+}
+
+.my-link:visited{
+    color: var(--link-visited-color);
+}
+
+.my-link:hover{
+    color: var(--link-hover-color);
+}
+
+.my-link:active{
+    color: var(--link-active-color);
+}
+
+.my-btn{
+    font-size: 0.8rem;
+}
+
+
+
+
+
+/* *-------------------------------------------------------------------
+STILI SPECIFICI */
+
+/* * HEADER */
+header .my-logo-container .my-title{
+    font-size: 2.5em;
+}
+
+header .my-logo-container .my-logo{
+    width: 10%;
+}
+
+
+
+/* * MAIN */
+main{
+    background-color: var(--main-bg-color);
+    padding: 5rem 0;
+    height: 100%;
+}
+
+main .my-grid{
+    height: var(--grid-dimension);
+    width: var(--grid-dimension);
+}
+
+main .my-grid .my-square{
+    border: 1px solid var(--primary-color);
+    width: calc(100% / var(--number-of-squares));
+    height: calc(100% / var(--number-of-squares));
+    border: 2px solid var(--primary-color);
+    font-size: 1.3em;
+    cursor: crosshair;
+}
+
+main .my-grid .my-square:hover{
+    background-color: var(--square-hover-color);
+}
+
+main .my-grid .my-square.active{
+    background-color: var(--square-active-color);
+}
+
+
+
+
+
+/* * FOOTER */
+footer .my-icon{
+    cursor: pointer;
+}
+
+footer .my-icon:hover{
+    color:var(--link-active-color);
+}
+
+
+
+
+
+
+
+
+
+
+/* ?-------------------------------------------------------------------
+RESPONSIVENESS */
+
+/* * SM */
+@media screen and (min-width:576px){
+    /* * GENERAL STYLES */
+
+    /* ? ROOT */
+    :root{
+        --general-font-size: 12px;
+        --grid-dimension : 500px;
+    }
+}
+
+
+
+
+
+/* * MD */
+@media screen and (min-width:768px){
+    /* * GENERAL STYLES */
+
+    /* ? ROOT */
+    :root{
+        --general-font-size: 15px;
+        --grid-dimension : 700px;
+    }
+
+
+    /* ? CLASSES */
+    .my-btn{
+        font-size: 1.10rem;
+    }
+}
+
+
+
+
+
+/* * LG */
+@media screen and (min-width:992px){
+    /* * GENERAL STYLES */
+
+    /* ? ROOT */
+    :root{
+        --general-font-size: 20px;
+        --grid-dimension : 900px;
+    }
+
+
+    /* ? CLASSES */
+    .my-btn{
+        font-size: 1.25rem;
+    }
+}

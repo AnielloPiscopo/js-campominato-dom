@@ -89,14 +89,10 @@ playBtn.addEventListener('click' , function(){
                     gridNumber.classList.add('d-none');
                     bombIcon.classList.remove('d-none');
                 }
-                else{
-                    isWinning = true;
-
-                    if(!gridSingleElement.classList.contains('my-point-number')){
+                else if(!gridSingleElement.classList.contains('my-point-number')){
                         gridSingleElement.classList.add('my-point-number');
                         score++;
                         scoreContainer.innerHTML = `Punteggio:${score}`;
-                    }
                 }
             })
         }
@@ -104,7 +100,8 @@ playBtn.addEventListener('click' , function(){
     
     else{
         mainElement.firstElementChild.remove();
-        playBtn.textContent = 'Play'
+        mainElement.lastElementChild.remove();
+        playBtn.textContent = 'Play';
     }
 })
 

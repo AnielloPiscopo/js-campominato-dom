@@ -78,6 +78,10 @@ main{
     height: 100%;
 }
 
+main .my-info{
+    width: var(--grid-dimension);
+}
+
 main .my-grid{
     height: var(--grid-dimension);
     width: var(--grid-dimension);

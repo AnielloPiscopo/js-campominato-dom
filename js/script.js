@@ -21,22 +21,28 @@ playBtn.addEventListener('click' , function(){
         let numberOfBombs = 16;
         const elemenstWithBomb = [];
         let score = 0;
+        let isWinning = true;
+        let i = 0;
+        let remainingNumbers = 100 - numberOfBombs;
 
 
         // ? INSIMENTO DELLE INFO DELLA PARTITA NEL DOM
 
         // * Creazione delle costanti
-        const infoMatch = getAnElement('div','info');
-        const scoreContainer = getAnElement('span' , 'score-number');
-        const numberOfBombsContainer = getAnElement('span','bombs-number')
+        const infoMatch = getAnElement('div','my-info d-flex justify-content-between');
+        const scoreContainer = getAnElement('span' , 'my-score-number');
+        const remainingNumbersContainer = getAnElement('span','my-remaining-numbers');
+        const numberOfBombsContainer = getAnElement('span','my-bombs-number')
 
         // * Inserimento del contenuto
         scoreContainer.innerHTML = 'Punteggio: 0';
-        numberOfBombsContainer.innerHTML = `Bombe in partita:${numberOfBombs};`
+        numberOfBombsContainer.innerHTML = `Bombe in partita:${numberOfBombs}`;
+        remainingNumbersContainer.innerHTML = `Numeri rimanenti:`;
 
         // * Inserimento nel DOM
         infoMatch.append(scoreContainer);
         scoreContainer.after(numberOfBombsContainer);
+        numberOfBombsContainer.after(remainingNumbersContainer);
         mainElement.append(infoMatch);
 
 
@@ -51,9 +57,13 @@ playBtn.addEventListener('click' , function(){
 
         
         // ? CREAZIONE DELLE BOMBE
-        for(let i=0 ; i<numberOfBombs ; i++){
-            let elementsOfTheListOfBombs = getARandomNumber(1 , 100);
-            elemenstWithBomb.push(elementsOfTheListOfBombs);
+        while(i<numberOfBombs){
+            let elementOfTheListOfBombs = getARandomNumber(1 , 100);
+            
+            if(!elemenstWithBomb.includes(elementOfTheListOfBombs)){
+                elemenstWithBomb.push(elementOfTheListOfBombs);
+                i++;
+            }
         }
         console.log(elemenstWithBomb)
 
@@ -78,21 +88,34 @@ playBtn.addEventListener('click' , function(){
 
             // * Aggiunta del evento per ogni singolo elemento della griglia
             gridSingleElement.addEventListener('click' , function(){
-                console.log(i);
+                if(isWinning){
+                    remainingNumbers--;
+                    remainingNumbersContainer.innerHTML = `Numeri rimanenti:${remainingNumbers}`;
+                    gridSingleElement.classList.add('my-active');
 
-                gridSingleElement.classList.add('my-active');
+                    if(elemenstWithBomb.includes(i)){
+                        gridSingleElement.classList.add('my-failure');
+                        alert('BOOOOOM!\nHai perso deficiente.');
+                        
+                        gridNumber.classList.add('d-none');
+                        bombIcon.classList.remove('d-none');
+                        
+                        isWinning = false;
+                        infoMatch.innerHTML = '<strong class="w-100 text-center text-uppercase">Hai perso</strong>'
+                    }
+                    else if(!gridSingleElement.classList.contains('my-point-number')){
+                            gridSingleElement.classList.add('my-point-number');
+                            score++;
+                            scoreContainer.innerHTML = `Punteggio:${score}`;
+                    }
 
-                if(elemenstWithBomb.includes(i)){
-                    gridSingleElement.classList.add('my-failure');
-                    alert('BOOOOOM!\nHai perso deficiente.');
                     
-                    gridNumber.classList.add('d-none');
-                    bombIcon.classList.remove('d-none');
-                }
-                else if(!gridSingleElement.classList.contains('my-point-number')){
-                        gridSingleElement.classList.add('my-point-number');
-                        score++;
-                        scoreContainer.innerHTML = `Punteggio:${score}`;
+                    if(remainingNumbers === 0){
+                        isWinning = false;
+                        infoMatch.innerHTML = `<strong class="w-100 text-center text-uppercase">Hai vinto</strong>`
+                    }
+                }else if(!isWinning && remainingNumbers!=0){
+                    alert('Devi resettare');
                 }
             })
         }

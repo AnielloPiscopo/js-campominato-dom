@@ -96,7 +96,7 @@ main .my-grid .my-square:hover{
     background-color: var(--square-hover-color);
 }
 
-main .my-grid .my-square.active{
+main .my-grid .my-square.my-active{
     background-color: var(--square-active-color);
 }
 

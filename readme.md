@@ -1,7 +1,7 @@
 <div align="center">
 <h1 align="center">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style&logo=JavaScript&logoColor=black" width="100" />
-<br>js-campominato-dom
+<br>JS-CAMPOMINATO-DOM
 </h1>
 <h3>◦ Campo minato fatto con Javascript,HTML e CSS.</h3>
 <h3>◦ Esercizio svolto durante corso Full-Stack di Boolean</h3>

@@ -1,13 +1,13 @@
 <div align="center">
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style&logo=JavaScript&logoColor=black" width="100" />
 <br>js-campominato-dom
 </h1>
 <h3>◦ Campo minato fatto con Javascript,HTML e CSS.</h3>
 <h3>◦ Esercizio svolto durante corso Full-Stack di Boolean</h3>
 
 <p align="center">
-<img src="[https://img.shields.io/badge/JavaScript-F7DF1E.svg](https://icon-library.com/images/javascript-icon-png/javascript-icon-png-23.jpg)?style&logo=JavaScript&logoColor=black" alt="JavaScript" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style&logo=JavaScript&logoColor=black" alt="JavaScript" />
 <img src="https://img.shields.io/badge/HTML5-E34F26.svg?style&logo=HTML5&logoColor=white" alt="HTML5" />
 </p>
 <img src="https://img.shields.io/github/languages/top/AnielloPiscopo/js-campominato-dom?style&color=5D6D7E" alt="GitHub top language" />

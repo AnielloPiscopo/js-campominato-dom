@@ -5,9 +5,7 @@
 </h1>
 <h3>◦ Campo minato fatto con Javascript,HTML e CSS.</h3>
 <h3>◦ Esercizio svolto durante corso Full-Stack di Boolean</h3>
-<h3>◦ LINK: [https://aniellopiscopo.github.io/js-campominato-dom/
-](https://aniellopiscopo.github.io/js-campominato-dom/
-) </h3>
+<h3>◦ LINK: https://aniellopiscopo.github.io/js-campominato-dom/</h3>
     
 <p align="center">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style&logo=JavaScript&logoColor=black" alt="JavaScript" />
